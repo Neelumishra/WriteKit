@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Google+Sans');
+
+/* apply the font to an element */
+body {
+  font-family: 'Google Sans', sans-serif;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    /* border-bottom: 1px solid #dadce0; */
+    height: 5rem;
+    padding: 0 16px;
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06); */
+  }
+  .left{
+    display: flex; 
+    /* gap: 16px; */
+  }
+  .logo {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 16px;
+  }
+  
+  .heading {
+    display: flex;
+    width: 55%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 26px;
+    color:grey;
+    /* font-weight: 500; */
+  }
+  .headIcon{
+    display: flex; 
+    gap: 16px;
+  }
+  .headIcon svg{
+    font-size: 28px;
+  }
+  .options {
+    display: flex;
+    gap: 28px;
+    /* margin-top: 4px; */
+    font-size: 19px;
+    color:rgb(93, 91, 91)
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+  }
+  
+  .icons svg {
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 30px;
+    /* border: 2px solid black; */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+  
+  .icons svg:hover{
+    background-color: #e7eaed;
+  }
+  .icons .MuiAvatar-root {
+    height: 24px;
+    width: 24px;
+  }
+  
