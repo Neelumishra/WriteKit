@@ -170,12 +170,12 @@ const Head = () => {
           <div className={styles.options}>
             {options.map((option, index) => (
               <li key={index} style={{ listStyle: "none" }}>
-                <div class={styles.dropdown}>
-                  <button class={styles.dropbtn}>{option.label}</button>
-                  <div class={styles.dropdowncontent}>
-                    {option.values.map((e) => (
-                      <a className={styles.Iconname} href="#">
-                        <span style={{marginRight:"4px"}}>{e.Icon}</span>
+                <div className={styles.dropdown}>
+                  <button className={styles.dropbtn}>{option.label}</button>
+                  <div className={styles.dropdowncontent}>
+                    {option.values.map((e, index) => (
+                      <a className={styles.Iconname} href="#" key={index}>
+                        <span style={{ marginRight: "4px" }}>{e.Icon}</span>
                         {e.name}
                       </a>
                     ))}
