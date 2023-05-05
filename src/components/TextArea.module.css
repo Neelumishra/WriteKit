@@ -14,3 +14,7 @@
     padding: 60px;
     border: 1px solid grey;
 }
+.main img{
+  height: 200px;
+  width: 200px;
+}

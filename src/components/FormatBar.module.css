@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 8px;
+    border-bottom: 1px solid #dfe1e5;
+    background-color: #f8f9fa;
+  }
+  
+  .container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 6px 12px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #5f6368;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  
+    &:hover {
+      background-color: rgba(95, 99, 104, 0.08);
+    }
+  
+    &:active {
+      background-color: rgba(95, 99, 104, 0.16);
+    }
+  }
+  
+  .container button:first-child {
+    margin-left: 0;
+  }
+  
+  .container button:last-child {
+    margin-right: 0;
+  }
+  
+  .container select {
+    height: 36px;
+    padding: 6px 12px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #5f6368;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .container label.uploadLabel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 6px 12px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #5f6368;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  
+    &:hover {
+      background-color: rgba(95, 99, 104, 0.08);
+    }
+  
+    &:active {
+      background-color: rgba(95, 99, 104, 0.16);
+    }
+  }
+  
+  .container label.uploadLabel input.fileInput {
+    display: none;
+  }
+.container input{
+    margin-top: 500px;
+}  
