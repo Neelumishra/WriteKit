@@ -8,7 +8,5 @@ export const contents = atom({
   key: "contents",
   default: "",
 });
-export const image = atom({
-  key: "image",
-  default: "",
-});
+
+

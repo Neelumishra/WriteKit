@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { contents, image } from "./recoilAtom/Atom";
+
 import styles from "./FormatBar.module.css";
 
 import UndoIcon from "@mui/icons-material/Undo";
@@ -22,31 +22,32 @@ import FormatColorTextOutlinedIcon from "@mui/icons-material/FormatColorTextOutl
 import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
 
 const FormatBar = (props) => {
-  const [images, setimage] = useRecoilState(image);
+ 
 
   function handleAction(res) {
     props.handleAction(res, false, "");
   }
   function handleChange(e, res) {
+    console.log(e,res)
     props.handleChange(res, false, e.target.value);
+    
   }
 
   function handleHeadingChange(e) {
-    const selectedHeading = e.target.value;
-    props.handleHeadingChange("heading", false, "H3");
+   console.log(e.target.value)
+    props.handleHeadingChange("formatBlock", false, e.target.value);
   }
   function handleAlignChange(e) {
     props.handleAlignChange(e.target.value);
   }
 
   function handleImageSelect(e) {
+    
     const file = URL.createObjectURL(e.target.files[0]);
-    setimage(file);
+   
+     props.handleImageSelect(file);
   }
-  function handleimage() {
-    props.handleImageSelect(images);
-    console.log(images);
-  }
+ 
 
   return (
     <div className={styles.container}>
@@ -56,7 +57,7 @@ const FormatBar = (props) => {
       <button onClick={() => handleAction("redo")}>
         <RedoIcon />
       </button>
-      <button>
+      <button onClick={() =>window.print()} >
         <PrintOutlinedIcon />
       </button>
       <button>
@@ -76,13 +77,13 @@ const FormatBar = (props) => {
         <option value="200%">200%</option>
       </select>
       <select className={styles.select} onChange={handleHeadingChange}>
-        <option value="<p>">NormalText</option>
-        <option value="<h1>">h1</option>
-        <option value="<h2>">h2</option>
-        <option value="<h3>">h3</option>
-        <option value="<h4>">h4</option>
-        <option value="<h5>">h5</option>
-        <option value="<h6>">h6</option>
+        <option value="p">NormalText</option>
+        <option value="<h1>">H1</option>
+        <option value="<h2>">H2</option>
+        <option value="<h3>">H3</option>
+        <option value="<h4>">H4</option>
+        <option value="<h5>">H5</option>
+        <option value="<h6>">H6</option>
       </select>
       <select onChange={(e) => handleChange(e, "fontName")}>
         <option value="Arial">Arial</option>
@@ -112,17 +113,18 @@ const FormatBar = (props) => {
         <ModeOutlinedIcon />
         <input
           type="color"
-          hidden
+          //  hidden
           onChange={(e) => {
-            handleChange(e, "backColor");
+            handleChange(e, "backcolor");
           }}
         />
       </label>
       <label>
         <FormatColorTextOutlinedIcon />
         <input
+        
           type="color"
-          hidden
+          // hidden
           onChange={(e) => {
             handleChange(e, "forecolor");
           }}
@@ -143,7 +145,7 @@ const FormatBar = (props) => {
       <button onClick={(e) => handleChange(e, "removeFormat")}>
         <FormatClearOutlinedIcon />
       </button>
-      <button onClick={handleimage}>setimage</button>
+      
       <label className={styles.uploadLabel}>
         <InsertPhotoOutlinedIcon />
         <input

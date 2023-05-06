@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    padding: 8px;
+    padding: 5px;
     border-bottom: 1px solid #dfe1e5;
     background-color: #f8f9fa;
   }
@@ -42,7 +42,7 @@
   
   .container select {
     height: 36px;
-    padding: 6px 12px;
+    padding: 6px 8px;
     margin: 0 2px;
     border: none;
     border-radius: 4px;
@@ -79,6 +79,9 @@
   .container label.uploadLabel input.fileInput {
     display: none;
   }
-.container input{
-    margin-top: 500px;
-}  
+ 
+ .container input{
+   height: 0px;
+   width: 0px;
+  }
+  

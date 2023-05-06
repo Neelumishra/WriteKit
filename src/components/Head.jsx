@@ -27,8 +27,51 @@ import CreateIcon from "@mui/icons-material/Create";
 import CheckIcon from "@mui/icons-material/Check";
 import styles from "./Head.module.css";
 import { Avatar } from "@mui/material";
+import { useRef } from "react";
 
 const Head = () => {
+  let imageref = useRef();
+  function handleClick(e) {
+    console.log("inside handleClick");
+    if (e === "Print") {
+      window.print();
+    } else if (e === "Undo") {
+      document.execCommand("undo");
+    } else if (e === "Redo") {
+      document.execCommand("redo");
+    } else if (e === "Copy") {
+      document.execCommand("copy");
+    } else if (e === "Paste") {
+      navigator.clipboard.readText().then((text) => {
+        const selection = window.getSelection();
+        const range = selection.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(document.createTextNode(text));
+        selection.removeAllRanges();
+      });
+    } else if (e === "Cut") {
+      document.execCommand("cut");
+    } else if (e === "select all") {
+      document.execCommand("selectAll");
+    } else if (e === "Image") {
+      imageref.current.click();
+    } else if (e === "Download") {
+      const divContent = document.getElementById("myDiv").innerHTML;
+      const blob = new Blob([divContent], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Download.txt";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  }
+
+  function handleImage(event) {
+    const file = URL.createObjectURL(event.target.files[0]);
+    document.execCommand("insertImage", false, file);
+  }
   const options = [
     {
       label: "File",
@@ -175,7 +218,18 @@ const Head = () => {
                   <div className={styles.dropdowncontent}>
                     {option.values.map((e, index) => (
                       <a className={styles.Iconname} href="#" key={index}>
-                        <span style={{ marginRight: "4px" }}>{e.Icon}</span>
+                        <span
+                          style={{ marginRight: "4px" }}
+                          onClick={() => handleClick(e.name)}
+                        >
+                          <input
+                            onChange={handleImage}
+                            type="file"
+                            hidden
+                            ref={imageref}
+                          />
+                          {e.Icon}
+                        </span>
                         {e.name}
                       </a>
                     ))}

@@ -8,47 +8,29 @@ export default function TextArea() {
   const [content, setContent] = useRecoilState(contents);
 
   function handleAction(res, res1, res2) {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
     document.execCommand(res, res1, res2);
-    const content = document.querySelector("#my-content-editable").innerHTML;
-    setContent(content);
   }
 
   function handleChange(res, res1, res2) {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
+    document.execCommand("styleWithCSS", false, true);
     document.execCommand(res, res1, res2);
-    const content = document.querySelector("#my-content-editable").innerHTML;
-    setContent(content);
   }
 
   function handleHeadingChange(res, res1, res2) {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
+    console.log(res, res1, res2);
+
     document.execCommand(res, res1, res2);
-    const content = document.querySelector("#my-content-editable").innerHTML;
-    setContent(content);
   }
 
   function handleImageSelect(res) {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    // const image = URL.createObjectURL(res);
+   
     document.execCommand("insertImage", false, res);
     console.log(res);
-    const content = document.querySelector("#my-content-editable").innerHTML;
-    setContent(content);
   }
 
   function handleAlignChange(res) {
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    // const image = URL.createObjectURL(res);
     document.execCommand(res);
-    console.log(res);
-    const content = document.querySelector("#my-content-editable").innerHTML;
-    setContent(content);
+    setContent(res);
   }
 
   return (
@@ -62,9 +44,11 @@ export default function TextArea() {
       />
       <div className={styles.container}>
         <div
+          id="myDiv"
+          style={{ zoom: content }}
           className={styles.main}
-          contentEditable
-          dangerouslySetInnerHTML={{ __html: content }}
+          contentEditable="true"
+          // dangerouslySetInnerHTML={{ __html: content }}
         ></div>
       </div>
     </>
