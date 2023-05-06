@@ -62,6 +62,7 @@ body {
 .icons {
   display: flex;
   justify-content: center;
+  
   gap: 35px;
   
 }
@@ -121,7 +122,19 @@ body {
   color:black;
   display: flex;
   align-items: center;
-  
+  gap:"5px"
+
+
+}
+.dropdowncontent a span{
+ 
+ 
+  text-decoration: none;
+  display: block;
+  color:black;
+  display: flex;
+  align-items: center;
+  justify-content: start;
 
 }
 

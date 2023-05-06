@@ -229,8 +229,8 @@ const Head = () => {
                             ref={imageref}
                           />
                           {e.Icon}
+                          {e.name}
                         </span>
-                        {e.name}
                       </a>
                     ))}
                   </div>
