@@ -41,7 +41,9 @@ export default function TextArea() {
         handleAlignChange={handleAlignChange}
       />
       <div className={styles.container} style={{ zoom: content }}>
+
         <div id="myDiv" className={styles.main} contentEditable="true"></div>
+
       </div>
     </>
   );

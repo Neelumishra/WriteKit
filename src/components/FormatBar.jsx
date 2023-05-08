@@ -137,6 +137,7 @@ const FormatBar = (props) => {
         />
       </label>
       <button onClick={() => handleAction("insertUnorderedList")}>
+
         <Tooltip title="Unorder List">
           <FormatListBulletedOutlinedIcon />
         </Tooltip>
@@ -145,6 +146,7 @@ const FormatBar = (props) => {
         <Tooltip title="Order List">
           <FormatListNumberedOutlinedIcon />
         </Tooltip>
+
       </button>
       <button onClick={() => handleAction("outdent")}>
         <Tooltip title="Indent Decrease">

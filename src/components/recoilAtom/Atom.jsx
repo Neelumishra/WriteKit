@@ -9,4 +9,9 @@ export const contents = atom({
   default: "",
 });
 
+// export const docNameAtom = atom({
+//   key: "docNameAtom",
+//   default: "Untitled Document",
+// });
+
 
