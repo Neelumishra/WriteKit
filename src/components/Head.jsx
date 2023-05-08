@@ -29,6 +29,11 @@ import styles from "./Head.module.css";
 import { Avatar } from "@mui/material";
 import { useRef } from "react";
 
+// import jsPDF from 'jspdf'
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import html2canvas from "html2canvas";
+
 const Head = () => {
   let imageref = useRef();
   function handleClick(e) {
@@ -56,17 +61,66 @@ const Head = () => {
     } else if (e === "Image") {
       imageref.current.click();
     } else if (e === "Download") {
-      const divContent = document.getElementById("myDiv").innerHTML;
-      const blob = new Blob([divContent], { type: "text/plain" });
-      const url = URL.createObjectURL(blob);
+      downloadPdf()
+      // const divContent = document.getElementById("myDiv").innerHTML;
+      // const blob = new Blob([divContent], { type: "text/plain" });
+      // const url = URL.createObjectURL(blob);
 
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Download.txt";
-      a.click();
-      URL.revokeObjectURL(url);
+      // const a = document.createElement("a");
+      // a.href = url;
+      // a.download = "Download.txt";
+      // a.click();
+      // URL.revokeObjectURL(url);
     }
   }
+
+  async function downloadPdf() {
+    const sheetContent = document.getElementById(`myDiv`);
+    const canvas = await html2canvas(sheetContent, { dpi: 300 });
+    const imageData = canvas.toDataURL("image/png", 1.0);
+    const pdfDoc = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+      compress: false,
+    });
+    pdfDoc.addImage(imageData, "PNG", 0, 0, 210, 297, "", "FAST");
+    pdfDoc.save(`GoogleDoc.pdf`);
+  }
+  // function saveDiv(divId, title) {
+  //   doc.fromHTML(`<html><head><title>${title}</title></head><body>` + document.getElementById(divId).innerHTML + `</body></html>`);
+  //   doc.save('div.pdf');
+  //  }
+
+  // function downloadPdf() {
+  //   const { jsPDF } = window.jspdf;
+  //   var doc = new jsPDF('l', 'mm', [1200, 1210]);
+  
+  //   var pdfjs = document.querySelector('myDiv');
+  
+  //   // Convert HTML to PDF in JavaScript
+  //   doc.html(pdfjs, {
+  //     callback: function(doc) {
+  //       doc.save("output.pdf");
+  //     },
+  //     x: 10,
+  //     y: 10
+  //   });
+  // }
+
+//   function downloadPdf() {
+//     const input = document.getElementById("myDiv");
+//     console.log(input);
+//     html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
+//       const pdf = new jsPDF("p", "mm", "a4");
+//       const imgData = canvas.toDataURL("image/png");
+//       const imgProps = pdf.getImageProperties(imgData);
+//       const pdfWidth = pdf.internal.pageSize.getWidth();
+//       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+//       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+//       pdf.save("download.pdf");
+//     });
+//   }
 
   function handleImage(event) {
     const file = URL.createObjectURL(event.target.files[0]);
@@ -204,7 +258,7 @@ const Head = () => {
         </div>
         <div className={styles.menu}>
           <div className={styles.heading}>
-            <p>Untitled document</p>
+            <p contentEditable>Untitled document</p>
             <div className={styles.headIcon}>
               <StarOutlineIcon />
               <DriveFileMoveIcon />

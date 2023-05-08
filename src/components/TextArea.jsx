@@ -42,10 +42,10 @@ export default function TextArea() {
         handleImageSelect={handleImageSelect}
         handleAlignChange={handleAlignChange}
       />
-      <div className={styles.container}>
+      <div className={styles.container} style={{ zoom: content }}>
         <div
           id="myDiv"
-          style={{ zoom: content }}
+          // style={{ zoom: content }}
           className={styles.main}
           contentEditable="true"
           // dangerouslySetInnerHTML={{ __html: content }}
