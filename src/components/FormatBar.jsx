@@ -43,27 +43,27 @@ const FormatBar = (props) => {
   return (
     <div className={styles.container}>
       <button onClick={() => handleAction("undo")}>
-        <Tooltip title="Undo">
+        <Tooltip title="Undo (Ctrl+Z)">
           <UndoIcon />
         </Tooltip>
       </button>
       <button onClick={() => handleAction("redo")}>
-        <Tooltip title="Redo">
+        <Tooltip title="Redo (Ctrl+Y)">
           <RedoIcon />
         </Tooltip>
       </button>
       <button onClick={() => window.print()}>
-        <Tooltip title="Print">
+        <Tooltip title="Print (Ctrl+P)">
           <PrintOutlinedIcon />
         </Tooltip>
       </button>
       <button>
-        <Tooltip title="spell and grammer check">
+        <Tooltip title="Spelling and grammar check (Ctrl+Alt+X)">
           <SpellcheckOutlinedIcon />
         </Tooltip>
       </button>
       <button>
-        <Tooltip title="image search">
+        <Tooltip title="Paint format">
           <ImagesearchRollerOutlinedIcon />
         </Tooltip>
       </button>
@@ -96,23 +96,23 @@ const FormatBar = (props) => {
       </select>
 
       <select className={styles.select} onChange={handleAlignChange}>
-        <option value="justifyLeft">justifyLeft</option>
-        <option value="justifyRight">justifyRight</option>
-        <option value="justifyCenter">justifyCenter</option>
-        <option value="justifyFull">justifyFull</option>
+        <option value="justifyLeft">Left align (Ctrl+Shift+L)</option>
+        <option value="justifyRight">Right align (Ctrl+Shift+R)</option>
+        <option value="justifyCenter">Center align (Ctrl+Shift+E)</option>
+        <option value="justifyFull">Justify (Ctrl+Shift+J)</option>
       </select>
       <button onClick={() => handleAction("bold")}>
-        <Tooltip title="Bold">
+        <Tooltip title="Bold (Ctrl+B)">
           <FormatBoldOutlinedIcon />
         </Tooltip>
       </button>
       <button onClick={() => handleAction("italic")}>
-        <Tooltip title="Italic">
+        <Tooltip title="Italic (Ctrl+I)">
           <FormatItalicOutlinedIcon />
         </Tooltip>
       </button>
       <button onClick={() => handleAction("underline")}>
-        <Tooltip title="UnderLine">
+        <Tooltip title="UnderLine (Ctrl+U)">
           <FormatUnderlinedOutlinedIcon />
         </Tooltip>
       </button>
@@ -138,28 +138,28 @@ const FormatBar = (props) => {
       </label>
       <button onClick={() => handleAction("insertUnorderedList")}>
 
-        <Tooltip title="Unorder List">
+        <Tooltip title="Bulleted List (Ctrl+Shift+8">
           <FormatListBulletedOutlinedIcon />
         </Tooltip>
       </button>
       <button onClick={() => handleAction("insertOrderedList")}>
-        <Tooltip title="Order List">
+        <Tooltip title="Numbered List (Ctrl+Shift+7)">
           <FormatListNumberedOutlinedIcon />
         </Tooltip>
 
       </button>
       <button onClick={() => handleAction("outdent")}>
-        <Tooltip title="Indent Decrease">
+        <Tooltip title="Decrease indent (Ctrl+[)">
           <FormatIndentDecreaseOutlinedIcon />
         </Tooltip>
       </button>
       <button onClick={() => handleAction("indent")}>
-        <Tooltip title="Indent Increase">
+        <Tooltip title="Increase indent (Ctrl+])">
           <FormatIndentIncreaseOutlinedIcon />
         </Tooltip>
       </button>
       <button onClick={(e) => handleChange(e, "removeFormat")}>
-        <Tooltip title="Clear Formatting">
+        <Tooltip title="Clear formatting (Ctrl+\)">
           <FormatClearOutlinedIcon />
         </Tooltip>
       </button>

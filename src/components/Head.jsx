@@ -28,13 +28,10 @@ import CheckIcon from "@mui/icons-material/Check";
 import styles from "./Head.module.css";
 import { Avatar, Button, Tooltip } from "@mui/material";
 import { useRef } from "react";
+
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-
-// import jsPDF from 'jspdf'
-import jsPDF from "jspdf";
 import "jspdf-autotable";
-import html2canvas from "html2canvas";
 
 const Head = () => {
   let imageref = useRef();
