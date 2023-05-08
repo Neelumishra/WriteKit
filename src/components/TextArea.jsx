@@ -18,12 +18,10 @@ export default function TextArea() {
 
   function handleHeadingChange(res, res1, res2) {
     console.log(res, res1, res2);
-
     document.execCommand(res, res1, res2);
   }
 
   function handleImageSelect(res) {
-   
     document.execCommand("insertImage", false, res);
     console.log(res);
   }
@@ -42,14 +40,8 @@ export default function TextArea() {
         handleImageSelect={handleImageSelect}
         handleAlignChange={handleAlignChange}
       />
-      <div className={styles.container}>
-        <div
-          id="myDiv"
-          style={{ zoom: content }}
-          className={styles.main}
-          contentEditable="true"
-          // dangerouslySetInnerHTML={{ __html: content }}
-        ></div>
+      <div className={styles.container} style={{ zoom: content }}>
+        <div id="myDiv" className={styles.main} contentEditable="true"></div>
       </div>
     </>
   );
