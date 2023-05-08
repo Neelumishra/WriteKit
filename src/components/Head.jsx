@@ -204,7 +204,7 @@ const Head = () => {
         </div>
         <div className={styles.menu}>
           <div className={styles.heading}>
-            <p>Untitled document</p>
+            <p contentEditable>Untitled document</p>
             <div className={styles.headIcon}>
               <StarOutlineIcon />
               <DriveFileMoveIcon />

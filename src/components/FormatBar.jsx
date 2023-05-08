@@ -130,10 +130,10 @@ const FormatBar = (props) => {
           }}
         />
       </label>
-      <button onClick={() => handleAction("unordered-list")}>
+      <button onClick={() => handleAction("insertUnorderedList")}>
         <FormatListBulletedOutlinedIcon />
       </button>
-      <button onClick={() => handleAction("ordered-list")}>
+      <button onClick={() => handleAction("insertOrderedList")}>
         <FormatListNumberedOutlinedIcon />
       </button>
       <button onClick={() => handleAction("outdent")}>
