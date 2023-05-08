@@ -1,8 +1,8 @@
 import DescriptionIcon from "@mui/icons-material/Description";
-import CommentIcon from "@mui/icons-material/Comment";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
+import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
+import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import DriveFileMoveOutlinedIcon from "@mui/icons-material/DriveFileMoveOutlined";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import FeedIcon from "@mui/icons-material/Feed";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
@@ -26,8 +26,10 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import CreateIcon from "@mui/icons-material/Create";
 import CheckIcon from "@mui/icons-material/Check";
 import styles from "./Head.module.css";
-import { Avatar } from "@mui/material";
+import { Avatar, Button, Tooltip } from "@mui/material";
 import { useRef } from "react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 // import jsPDF from 'jspdf'
 import jsPDF from "jspdf";
@@ -137,7 +139,7 @@ const Head = () => {
         { name: "Email", Icon: <EmailIcon /> },
         { name: "Download", Icon: <DownloadIcon /> },
         { name: "Rename", Icon: <DriveFileRenameOutlineIcon /> },
-        { name: "Move", Icon: <DriveFileMoveIcon /> },
+        { name: "Move", Icon: <DriveFileMoveOutlinedIcon /> },
         { name: "Add a shortcut to Drive", Icon: <AddBoxIcon /> },
         { name: "Language", Icon: <DeleteOutlineIcon /> },
         { name: "History", Icon: <RestoreIcon /> },
@@ -260,8 +262,12 @@ const Head = () => {
           <div className={styles.heading}>
             <p contentEditable>Untitled document</p>
             <div className={styles.headIcon}>
-              <StarOutlineIcon />
-              <DriveFileMoveIcon />
+              <Tooltip title="Star">
+                <StarOutlineIcon />
+              </Tooltip>
+              <Tooltip title="Move file">
+                <DriveFileMoveOutlinedIcon />
+              </Tooltip>
             </div>
           </div>
           <div className={styles.options}>
@@ -295,14 +301,43 @@ const Head = () => {
         </div>
       </div>
       <div className={styles.icons}>
-        <CommentIcon />
-        <VideocamIcon />
-        <PersonAddAltIcon />
-        <Avatar
-          sx={{ marginBottom: "3rem" }}
-          alt="Remy Sharp"
-          src="/static/images/avatar/1.jpg"
-        />
+        <Tooltip title="Open comment history">
+          <CommentOutlinedIcon />
+        </Tooltip>
+        <Tooltip title="Join on call">
+          <VideocamOutlinedIcon />
+        </Tooltip>
+        <Tooltip title="Private only to me">
+          <Button
+            sx={{
+              borderRadius: "100px",
+              cursor: "pointer",
+              fontFamily: "Google Sans,Roboto,sans-serif",
+              fontSize: "14px",
+              fontWeight: "500",
+              height: "36px",
+              lineHeight: "20px",
+              padding: "8px 16px",
+              backgroundColor: "#c2e7ff",
+              color: "#1a1a1a",
+              "&:hover": {
+                backgroundColor: "#c2e7ff",
+                boxShadow:
+                  "0 1px 0 rgba(60,64,67,0.302), 0 1px 3px rgba(60,64,67,0.502)",
+              },
+            }}
+          >
+            <LockOutlinedIcon />
+            Share
+          </Button>
+        </Tooltip>
+        <Tooltip title="Google Account">
+          <Avatar
+            sx={{ marginBottom: "3rem", color: "white" }}
+            alt=""
+            src="https://in.images.search.yahoo.com/search/images;_ylt=AwrKGBaZQlNkHGgJIc67HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Nj?p=unknown+profile+image&type=E210IN714G0&ei=UTF-8&fr=mcafee&th=108.1&tw=159.7&imgurl=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Fdetail%2F114-1149847_avatar-unknown-dp.png&rurl=https%3A%2F%2Fwww.pngkey.com%2Fdetail%2Fu2q8u2w7e6r5o0o0_avatar-unknown-dp%2F&size=22KB&name=Avatar+-+Unknown+Dp+-+Free+Transparent+PNG+Download+-+PNGkey&oid=4&h=557&w=820&turl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cphbUmdFsam1huiAHaOnGwHaFB%26pid%3DApi%26rs%3D1%26c%3D1%26qlt%3D95%26w%3D159%26h%3D108&tt=Avatar+-+Unknown+Dp+-+Free+Transparent+PNG+Download+-+PNGkey&sigr=wnaydK0ZvBPb&sigit=r4U_mnIC7KMB&sigi=zKTdtMwBSrTp&sign=RJi9aZCwG40b&sigt=RJi9aZCwG40b"
+          />
+        </Tooltip>
       </div>
     </div>
   );

@@ -1,8 +1,4 @@
-import { useState } from "react";
-import { useRecoilState } from "recoil";
-
 import styles from "./FormatBar.module.css";
-
 import UndoIcon from "@mui/icons-material/Undo";
 import RedoIcon from "@mui/icons-material/Redo";
 import FormatBoldOutlinedIcon from "@mui/icons-material/FormatBoldOutlined";
@@ -18,23 +14,20 @@ import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import SpellcheckOutlinedIcon from "@mui/icons-material/SpellcheckOutlined";
 import FormatColorTextOutlinedIcon from "@mui/icons-material/FormatColorTextOutlined";
-// import FormatAlignLeftOutlinedIcon from "@mui/icons-material/FormatAlignLeftOutlined";
 import InsertPhotoOutlinedIcon from "@mui/icons-material/InsertPhotoOutlined";
+import { Tooltip } from "@mui/material";
 
 const FormatBar = (props) => {
- 
-
   function handleAction(res) {
     props.handleAction(res, false, "");
   }
   function handleChange(e, res) {
-    console.log(e,res)
+    console.log(e, res);
     props.handleChange(res, false, e.target.value);
-    
   }
 
   function handleHeadingChange(e) {
-   console.log(e.target.value)
+    console.log(e.target.value);
     props.handleHeadingChange("formatBlock", false, e.target.value);
   }
   function handleAlignChange(e) {
@@ -42,29 +35,37 @@ const FormatBar = (props) => {
   }
 
   function handleImageSelect(e) {
-    
     const file = URL.createObjectURL(e.target.files[0]);
-   
-     props.handleImageSelect(file);
+
+    props.handleImageSelect(file);
   }
- 
 
   return (
     <div className={styles.container}>
       <button onClick={() => handleAction("undo")}>
-        <UndoIcon />
+        <Tooltip title="Undo">
+          <UndoIcon />
+        </Tooltip>
       </button>
       <button onClick={() => handleAction("redo")}>
-        <RedoIcon />
+        <Tooltip title="Redo">
+          <RedoIcon />
+        </Tooltip>
       </button>
-      <button onClick={() =>window.print()} >
-        <PrintOutlinedIcon />
+      <button onClick={() => window.print()}>
+        <Tooltip title="Print">
+          <PrintOutlinedIcon />
+        </Tooltip>
       </button>
       <button>
-        <SpellcheckOutlinedIcon />
+        <Tooltip title="spell and grammer check">
+          <SpellcheckOutlinedIcon />
+        </Tooltip>
       </button>
       <button>
-        <ImagesearchRollerOutlinedIcon />
+        <Tooltip title="image search">
+          <ImagesearchRollerOutlinedIcon />
+        </Tooltip>
       </button>
       <select className={styles.select} onChange={handleAlignChange}>
         <option value="Fit">Fit</option>
@@ -101,13 +102,19 @@ const FormatBar = (props) => {
         <option value="justifyFull">justifyFull</option>
       </select>
       <button onClick={() => handleAction("bold")}>
-        <FormatBoldOutlinedIcon />
+        <Tooltip title="Bold">
+          <FormatBoldOutlinedIcon />
+        </Tooltip>
       </button>
       <button onClick={() => handleAction("italic")}>
-        <FormatItalicOutlinedIcon />
+        <Tooltip title="Italic">
+          <FormatItalicOutlinedIcon />
+        </Tooltip>
       </button>
       <button onClick={() => handleAction("underline")}>
-        <FormatUnderlinedOutlinedIcon />
+        <Tooltip title="UnderLine">
+          <FormatUnderlinedOutlinedIcon />
+        </Tooltip>
       </button>
       <label>
         <ModeOutlinedIcon />
@@ -122,7 +129,6 @@ const FormatBar = (props) => {
       <label>
         <FormatColorTextOutlinedIcon />
         <input
-        
           type="color"
           // hidden
           onChange={(e) => {
@@ -131,23 +137,37 @@ const FormatBar = (props) => {
         />
       </label>
       <button onClick={() => handleAction("insertUnorderedList")}>
-        <FormatListBulletedOutlinedIcon />
+
+        <Tooltip title="Unorder List">
+          <FormatListBulletedOutlinedIcon />
+        </Tooltip>
       </button>
       <button onClick={() => handleAction("insertOrderedList")}>
-        <FormatListNumberedOutlinedIcon />
+        <Tooltip title="Order List">
+          <FormatListNumberedOutlinedIcon />
+        </Tooltip>
+
       </button>
       <button onClick={() => handleAction("outdent")}>
-        <FormatIndentDecreaseOutlinedIcon />
+        <Tooltip title="Indent Decrease">
+          <FormatIndentDecreaseOutlinedIcon />
+        </Tooltip>
       </button>
       <button onClick={() => handleAction("indent")}>
-        <FormatIndentIncreaseOutlinedIcon />
+        <Tooltip title="Indent Increase">
+          <FormatIndentIncreaseOutlinedIcon />
+        </Tooltip>
       </button>
       <button onClick={(e) => handleChange(e, "removeFormat")}>
-        <FormatClearOutlinedIcon />
+        <Tooltip title="Clear Formatting">
+          <FormatClearOutlinedIcon />
+        </Tooltip>
       </button>
-      
+
       <label className={styles.uploadLabel}>
-        <InsertPhotoOutlinedIcon />
+        <Tooltip title="Insert Image">
+          <InsertPhotoOutlinedIcon />
+        </Tooltip>
         <input
           type="file"
           accept="image/*"
