@@ -86,7 +86,10 @@ const FormatBar = (props) => {
         <option value="<h5>">H5</option>
         <option value="<h6>">H6</option>
       </select>
-      <select onChange={(e) => handleChange(e, "fontName")}>
+      <select
+        className={styles.selectFont}
+        onChange={(e) => handleChange(e, "fontName")}
+      >
         <option value="Arial">Arial</option>
         <option value="Helvetica">Helvetica</option>
         <option value="Times New Roman">Times New Roman</option>
@@ -137,7 +140,6 @@ const FormatBar = (props) => {
         />
       </label>
       <button onClick={() => handleAction("insertUnorderedList")}>
-
         <Tooltip title="Bulleted List (Ctrl+Shift+8">
           <FormatListBulletedOutlinedIcon />
         </Tooltip>
@@ -146,7 +148,6 @@ const FormatBar = (props) => {
         <Tooltip title="Numbered List (Ctrl+Shift+7)">
           <FormatListNumberedOutlinedIcon />
         </Tooltip>
-
       </button>
       <button onClick={() => handleAction("outdent")}>
         <Tooltip title="Decrease indent (Ctrl+[)">
